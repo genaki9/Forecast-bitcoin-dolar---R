@@ -2,7 +2,7 @@
 library(jsonlite)
 bitcoin2019 <- fromJSON("https://mindicador.cl/api/bitcoin/2019")$serie
 
-periodo <- 2009:2020
+periodo <- 2009:2021
 bitcoin <- lapply(periodo,FUN=
                     function(x){fromJSON(paste0("https://mindicador.cl/api/bitcoin/",x))$serie})
 
@@ -57,7 +57,7 @@ hchart(pacf(serie.bitcoin))  #pacf = auto correlacion parcial
 #### repetir para el dolar
 
 
-periodo <- 2009:2020
+periodo <- 2009:2021
 dolar <- lapply(periodo,FUN=
                     function(x){fromJSON(paste0("https://mindicador.cl/api/dolar/",x))$serie})
 
@@ -127,4 +127,5 @@ forecast::auto.arima(
 )->forDolarbit
 
 pred.reg <- forecast(forDolarbit,xreg=xreg.test)
+plot(pred.reg)
  
